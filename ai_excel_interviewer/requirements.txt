@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+httpx
+pydantic
+pydantic-settings
+python-dotenv
+pyyaml
+google-generativeai
+google-adk==1.4.1
+a2a-sdk
+fastmcp
+click
+sqlalchemy[asyncpg]
+psycopg2-binary
+alembic
+unicorn
