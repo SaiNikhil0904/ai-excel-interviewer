@@ -1,69 +1,92 @@
-# React + TypeScript + Vite
+# Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This frontend project provides a user interface for interacting with the **Backend-for-Frontend (BFF)**.
+Users can send messages, receive streaming responses, and maintain multi-turn conversation sessions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+* **Send messages** to agents via the BFF API.
+* **Receive streaming responses** (SSE: Server-Sent Events) for real-time updates.
+* **Multi-turn conversations** using `context_id` to maintain session state.
+* Simple **health check** integration with the BFF.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Node.js >= 18.x
+* npm or yarn
+* BFF server running locally (default: `http://localhost:8000`)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+npm install marked
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Running the Frontend
+
+```bash
+# Start development server
+npm run dev
+```
+
+By default, it runs on `http://localhost:5173`.
+
+## Configuration
+
+The frontend expects the **BFF API** endpoint as an environment variable:
+
+```env
+BFF_URL = 'http://localhost:8000/api/v1'; 
+```
+
+## Usage
+
+### Sending a Message
+
+* Users type a message in the input box.
+* Frontend POSTs to:
+
+```
+POST /api/v1/chats/messages
+Body: { "content": "<your message>" }
+Optional Query: context_id=<existing-session-id>
+```
+
+### Receiving Streaming Responses
+
+* The frontend listens to **Server-Sent Events (SSE)**:
 
 ```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+const evtSource = new EventSource(`${BFF_URL}/chats/messages?context_id=${sessionId}`);
+evtSource.onmessage = (event) => {
+  const message = JSON.parse(event.data);
+  console.log(message.type, message.content);
+};
 ```
+
+## Project Structure
+
+```
+frontend/
+├── public/          # Static assets
+├── src/
+│   ├── components/  # React/Vue components
+│   ├── services/    # API calls to BFF
+│   ├── App.js       # Main app entry
+│   └── main.js      # JS entrypoint
+├── package.json
+└── .env
+```
+
+## Notes
+
+* Designed to work with **any BFF** following the streaming message API.
+* Supports multiple agents and multiple conversation sessions.
+* Ensure the BFF is running before starting the frontend.
