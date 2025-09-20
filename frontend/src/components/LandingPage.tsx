@@ -17,7 +17,6 @@ const LandingPage = ({ onStartInterview }: LandingPageProps) => {
           </svg>
           <span>Excel AI Interviewer</span>
         </div>
-        {/* You can add nav links here if needed */}
       </nav>
 
       {/* --- Main Hero Section --- */}
@@ -62,7 +61,6 @@ const LandingPage = ({ onStartInterview }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* --- "How It Works" Section --- */}
       <section className="how-it-works">
         <h2>How Our AI Interviewer Works</h2>
         <div className="steps-container">
