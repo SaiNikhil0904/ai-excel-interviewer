@@ -64,7 +64,7 @@ def build_message_payload(text: str, user_id: str, context_id: Optional[str] = N
         "metadata": {"user_id": user_id},
     }
     if context_id:
-        msg_dict["context_id"] = context_id  # updated from contextId
+        msg_dict["contextId"] = context_id
     return {"message": Message.model_validate(msg_dict)}
 
 async def poll_for_final_task(client: A2AClient, task_id: str) -> Optional[Task]:
@@ -130,7 +130,7 @@ async def interactive_loop(client: A2AClient, user_id: str, agent_card: AgentCar
 
             initial_task = response.root.result
             if not current_context_id:
-                current_context_id = initial_task.context_id  # updated from contextId
+                current_context_id = initial_task.contextId
                 save_session_id(current_context_id)
 
             final_task = await poll_for_final_task(client, initial_task.id)
