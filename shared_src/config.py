@@ -36,6 +36,11 @@ class Settings(BaseSettings):
     DB_HOST: str = Field("localhost", alias="DB_HOST")
     DB_PORT: int = Field(5432, alias="DB_PORT")
 
+    # BFF
+    BFF_PORT_EXPOSED: int = 8000
+    BFF_PORT_INTERNAL: int = 8000
+    ALLOWED_ORIGINS_STR: str = '["*"]'
+    
     # --- AI Excel Interviewer Service ---
     AI_EXCEL_INTERVIEWER_SERVICE_NAME: str = Field("ai_excel_interviewer", alias="AI_EXCEL_INTERVIEWER_SERVICE_NAME")
     AI_EXCEL_INTERVIEWER_INTERNAL_PORT: int = Field(8100, alias="AI_EXCEL_INTERVIEWER_INTERNAL_PORT")
