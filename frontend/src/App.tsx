@@ -4,19 +4,19 @@ import InterviewPage from './components/InterviewPage';
 import './App.css';
 
 function App() {
-  const [isInterviewStarted, setIsInterviewStarted] = useState(false);
+  const [isInterviewActive, setIsInterviewActive] = useState(false);
 
   const handleStartInterview = () => {
-    setIsInterviewStarted(true);
+    setIsInterviewActive(true);
   };
 
   const handleEndInterview = () => {
-    setIsInterviewStarted(false);
+    setIsInterviewActive(false);
   };
 
   return (
     <div className="app-container">
-      {isInterviewStarted ? (
+      {isInterviewActive ? (
         <InterviewPage onEndInterview={handleEndInterview} />
       ) : (
         <LandingPage onStartInterview={handleStartInterview} />
