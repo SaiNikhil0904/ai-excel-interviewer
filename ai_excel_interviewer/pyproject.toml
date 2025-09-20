@@ -1,5 +1,5 @@
 # =============================================================================
-# agents/ai_excel_interviewer/pyproject.toml
+# ai_excel_interviewer/pyproject.toml
 #
 # Project definition for the AI Excel Interviewer Agent.
 # - Conducts adaptive mock interviews for Excel skills assessment.
@@ -110,3 +110,4 @@ select = ["E", "W", "F", "I", "UP"]
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths    = ["tests"]
+
