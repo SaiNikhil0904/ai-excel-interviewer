@@ -1,0 +1,247 @@
+/* =============================================================================
+   Styling for the LandingPage Component (v3 - Final Polish)
+   This version matches the professional mockup with explicit colors and spacing,
+   and is resilient to browser dark mode settings.
+   ============================================================================= */
+
+/* --- Main Container & Background --- */
+.landing-container {
+  width: 100%;
+  background-color: #ffffff; 
+  color: #333; 
+  height: min-content; 
+  padding-bottom: 2.5rem;
+}
+
+/* --- Top Navigation --- */
+.landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: .5rem .5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #212529;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  text-align: center;
+  padding: 2rem 2rem;
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #e9ecef;
+}
+
+.brand-by {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #007bff;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.hero-section h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #3B82F6; 
+  margin: 0 0 1rem 0;
+}
+
+.hero-section .subtitle {
+  font-size: 1.15rem;
+  color: #6c757d;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  line-height: 1.7;
+}
+
+/* --- Start Box --- */
+.start-box {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 2.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.start-box h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #212529;
+}
+
+.start-box p {
+  margin: 0 0 1.5rem 0;
+  color: #6c757d;
+}
+
+.start-button {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #3B82F6; 
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.start-button:hover { background-color: #2563EB; }
+.start-button:active { transform: scale(0.98); }
+
+.time-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* --- Features Grid --- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.3rem;
+  padding: 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  text-align: left;
+  background-color: #f8f9fa; 
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card .icon img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: #343a40;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+/* --- How It Works Section --- */
+.how-it-works {
+  text-align: center;
+  padding: 1rem 10rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+
+.how-it-works h2 {
+  font-size: 2.2rem;
+  margin-bottom: 4rem;
+  color: #343a40;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.step {
+  max-width: 280px;
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #3B82F6; 
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.5rem auto;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.step h3 {
+  margin: 0 0 0.5rem 0;
+  color: #212529;
+  font-size: 1.2rem;
+}
+
+.step p {
+  margin: 0;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.step-arrow {
+  font-size: 2rem;
+  color: #adb5bd;
+  margin-top: 50px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 4rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-nav { padding: 1rem 2rem; }
+  .hero-section h1 { font-size: 2.5rem; }
+  .hero-section { padding: 3rem 1rem; }
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .step-arrow {
+    transform: rotate(90deg);
+    margin: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    padding: 3rem 1rem;
+  }
+  .landing-nav { padding: 1rem; }
+}
