@@ -51,8 +51,8 @@ class ExcelInterviewerAgentExecutor(AgentExecutor):
         user_meta = context.message.metadata or {}
         user_id = str(user_meta.get("user_id", f"user_{uuid4().hex[:6]}"))
 
-        adk_session_id = context.message.context_id or uuid4().hex
-        context.message.context_id = adk_session_id
+        adk_session_id = context.message.contextId or uuid4().hex
+        context.message.contextId = adk_session_id
 
         if not a2a_task:
             a2a_task = new_task(context.message)
@@ -134,4 +134,5 @@ class ExcelInterviewerAgentExecutor(AgentExecutor):
             new_agent_text_message("The Excel Interviewer task has been canceled.", task_to_cancel.context_id, task_to_cancel.id),
             final=True
         )
+
         return task_to_cancel
