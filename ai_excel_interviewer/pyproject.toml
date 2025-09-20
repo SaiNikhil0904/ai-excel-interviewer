@@ -1,0 +1,22 @@
+[build-system]
+requires      = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name            = "ai-excel-interviewer"
+version         = "1.0.0"
+description     = "An adaptive AI agent that conducts mock interviews for Excel skills."
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi", "uvicorn[standard]", "httpx", "pydantic", "pydantic-settings",
+  "python-dotenv", "pyyaml", "google-generativeai", "google-adk", "a2a-sdk",
+  "fastmcp", "click", "sqlalchemy[asyncpg]", "psycopg2-binary", "alembic", "unicorn"
+  "google-adk==1.4.1",
+]
+
+[project.scripts]
+excel-interviewer-db-init = "db.database:init_db" 
+excel-interviewer-backend = "backend_api.server:main"
+excel-interviewer-mcp     = "mcp_server.server:main"
+excel-interviewer-agent   = "excel_interviewer_agent.__main__:main"
+excel-interviewer-client  = "client.a2a_client:main"
