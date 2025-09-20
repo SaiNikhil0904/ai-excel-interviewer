@@ -144,9 +144,6 @@ ai_excel_interviewer/
     ├── .env
     ├── pyproject.toml
     └── src/
-        ├── db/
-        │   ├── database.py
-        │   └── models.py
         ├── backend_api/
         │   └── server.py
         ├── mcp_server/
@@ -160,18 +157,3 @@ ai_excel_interviewer/
         └── client/
             └── a2A_client.py
 ```
-
-## Contributing
-
-We welcome contributions! Please follow these steps:
-
-1.  Fork the repository.
-2.  Create a new feature branch (`git checkout -b feature/my-new-feature`).
-3.  Write clean, well-documented, and PEP-8 compliant code.
-4.  Add or update unit tests to cover your changes.
-5.  Ensure all tests and quality checks pass.
-6.  Submit a Pull Request with a clear description of your changes.
-
-## License
-
-This project is licensed under the Apache-2.0 License. See the `LICENSE` file for more details.
